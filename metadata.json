@@ -1,0 +1,6 @@
+{
+  "name": "OftalmoResident - Plataforma de Estudio para Residentes de Oftalmología",
+  "description": "Plataforma de estudio interactiva para residentes de oftalmología con módulos por área, banco de preguntas con aplicación clínica, profundización temática y calculadoras clínicas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,411 @@
+import { SubspecialtyModule } from '../types/ophthalmology';
+
+export const SUBSPECIALTY_MODULES: SubspecialtyModule[] = [
+  {
+    id: 'cornea',
+    name: 'Córnea y Superficie Ocular',
+    shortName: 'Córnea',
+    iconName: 'Eye',
+    color: 'from-emerald-500 to-teal-700',
+    badgeColor: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+    description: 'Estudio de la película lagrimal, epitelio, estroma, endotelio corneal, queratopatías infecciosas e inmunológicas, ectasias y trasplantes.',
+    keyTopics: [
+      'Ojo Seco y Superficie Ocular (Deficiencia Acuosa y Evaporativa, DGM, Meibomianitis, Blefaritis Anterior/Posterior, Sjögren, Artritis Reumatoide, Tiroidopatía, Hipovitaminosis A y Toxicidad por Conservantes/BAK)',
+      'Queratitis Infecciosa (Bacteriana por Pseudomonas/Staphylococcus, Fúngica por Fusarium/Aspergillus, Acanthamoeba y Viral; Protocolos de Raspado, Ensayos SCUT y MUTT)',
+      'Queratocono y Ectasias Corneales (Tomografía Pentacam Belin-Ambrósio BAD-D, Biomecánica Corvis ST, Crosslinking CXL y Anillos Intraestromales)',
+      'Distrofias Corneales (Clasificación Molecular IC3D: Epiteliales EBMD/Cogan, Estromales TGFBI Lattice/Granular/Macular CHST6 y Endoteliales de Fuchs FECD)',
+      'Queratopatía Bullosa Pseudofáquica y Disfunción Endotelial (Descompensación Quirúrgica, Conteo Endotelial, Bullas Epiteliales y Terapia con DSAEK/DMEK)',
+      'Trauma Corneal, Erosión Recurrente, Cuerpos Extraños y Quemadura Química (Anillo de Óxido, RES, Laceraciones, Escala Roper-Hall/Dua, Isquemia Límbica y SLET)',
+      'Herpes Ocular (Queratitis Dendrítica/Geográfica VHS, Estromal Inmune vs Necrotizante, Endotelitis, Herpes Zóster Oftálmico HZO, Hutchinson y Ensayos HEDS I/II)',
+      'Alergia Ocular y Superficie (Queratoconjuntivitis Vernal VKC con Horner-Trantas y Úlcera en Escudo, Atópica AKC, Papilar Gigante GPC y Límbica Superior SLK)',
+      'Degeneraciones y Depósitos Corneales (Pterigión con Autoinjerto Conjuntival, Pingüécula, Queratopatía en Banda Cálcica con EDTA, Salzmann, Arco Senil y Líneas de Hierro)',
+      '10. Trasplante de Córnea: PK, DALK, DSAEK y DMEK (Técnica de Gran Burbuja de Anwar, Rechazo Endotelial con Línea de Khodadoust, Manejo Inmunosupresor y Falla del Injerto)',
+      '11. Queratitis Ulcerativa Periférica (PUK) y Úlcera de Mooren: Necrosis colagenolítica estromal yuxtalimbar en semiluna mediada por MMPs (MMP-1, MMP-9); asociación con vasculitis sistémicas letales (Artritis Reumatoide activa con 40% de mortalidad a 5 años, Granulomatosis con Poliangitis GPA c-ANCA/PR3); diagnóstico diferencial frente a Úlcera de Mooren (sin escleritis, con borde socavado en festón); ¡PROHIBICIÓN FORMAL DE AINES TÓPICOS por inducir corneal melt!; bolos de metilprednisolona y biológicos (Rituximab, Ciclofosfamida); y adhesivo de cianoacrilato.',
+      '12. Deficiencia de Células Madre Límbicas (LSCD) y Reconstrucción de Superficie: Destrucción de las empalizadas de Vogt; conjuntivalización corneal con invasión de células caliciformes y neovascularización 360°; diagnóstico gold standard con Citología de Impresión (PAS+ / queratinas K13 vs K3/K12); técnicas quirúrgicas contemporáneas: SLET autólogo (Simple Limbal Epithelial Transplantation con microinjertos sobre amnios) en unilaterales, CLET, aloinjertos limbares (KLAL) y COMET en bilaterales; ¡prohibido realizar queratoplastia penetrante sin restaurar el limbo!',
+      '13. Penfigoide de Membranas Mucosas (MMP) y Stevens-Johnson / NET: Enfermedades cicatrizales ampollares; Penfigoide con autoanticuerpos en la membrana basal (DIF lineal con IgG, IgA y C3 en BMZ) y estadios de Foster (acortamiento de fórnix <8 mm, simbléfaron y anquilobléfaron) tratado con inmunosupresión sistémica (Dapsona si G6PD normal, Ciclofosfamida, Rituximab); y Síndrome de Stevens-Johnson / NET inducido por fármacos (Sulfas, Antiepilépticos) con colocación hiperaguda obligatoria de Membrana Amniótica en fórnices en los primeros 7-10 días.',
+      '14. Queratitis Infecciosas Atípicas: Micobacterias No Tuberculosas (NTM post-LASIK: M. chelonae y M. fortuitum en interfase tardía a las semanas con infiltrados en vidrio esmerilado que exigen levantamiento de flap, lavado con Amikacina 40 mg/mL, Claritromicina tópica/oral y amputación de flap); Nocardia asteroides (bacilos grampositivos ácido-alcohol resistentes Kinyoun+ en corona o guirnalda perlada sensibles a Amikacina y TMP-SMX); y Microsporidiosis (esporas intracelulares tratadas con Fumagilina tópica y Albendazol/Voriconazol).',
+      '15. Queratocono Avanzado, Hidrops Corneal Agudo y Neumotaponamiento: Fractura mecánica espontánea de la membrana de Descemet y endotelio por frotamiento ocular compulsivo (eye rubbing); edema masivo en vidrio lechoso con paquimetría >1200 um; diagnóstico por AS-OCT de rollos de Descemet y macroquistes estromales; Estándar de Oro Quirúrgico contemporáneo con Neumotaponamiento Intracameral con gas isoexpansivo C3F8 al 14% que reduce la resolución de 4 meses a 2 semanas; e iridotomía profiláctica para evitar bloqueo pupilar.',
+      '16. Queratoplastia Lamelar Anterior Profunda (DALK): Reemplazo selectivo del 100% del estroma conservando intacto el endotelio receptor; inmunidad absoluta al rechazo endotelial; técnica de la Gran Burbuja de Anwar (Big-Bubble) a <100 um de Descemet; distinción de la Capa de Dua: Burbuja Tipo 1 (Pre-Dua, hiper-resistente) vs Tipo 2 (Pre-Descemet, frágil); algoritmo ante perforación: microperforación periférica permite continuar con aire; macroperforación central >2 mm obliga a conversión a Queratoplastia Penetrante (PKP).',
+      '17. Queratopatía Neurotrófica (NK) y Factor de Crecimiento Nervioso Recombinante (Cenegermina): Denervación sensorial de la rama V1 trigeminal (post-herpes, neurinoma del acústico, diabetes); Clasificación de Mackie: Estadio 1 (queratopatía punteada e hiperplasia), Estadio 2 (Defecto Epitelial Persistente PED ovalado con bordes enrollados indoloro) y Estadio 3 (úlcera estromal y perforación sin dolor); tratamiento biológico curativo de vanguardia con Cenegermina al 0.002% (rhNGF tópica 6 veces/día por 8 semanas - Oxervate), suero autólogo, lentes esclerales, tarsorrafia y neurotización corneal.'
+    ],
+    anatomicalStructures: ['Epitelio', 'Membrana de Bowman', 'Estroma (90%)', 'Membrana de Descemet', 'Endotelio', 'Limbo esclerocorneal'],
+    referenceGuidelines: 'AAO BCSC Section 8: External Disease and Cornea / TFOS DEWS II',
+    highYieldTips: [
+      'Úlceras con infiltrado estromal >2 mm o centrales requieren raspado inmediato para Gram y cultivo antes de antibióticos fortificados.',
+      'En queratitis herpética estromal necrotizante: NUNCA usar corticoides sin cobertura antiviral plena.',
+      'En quemaduras químicas: la isquemia límbica (blanqueamiento escleral) define el pronóstico (Clasificación de Roper-Hall / Dua).'
+    ]
+  },
+  {
+    id: 'glaucoma',
+    name: 'Glaucoma y Presión Intraocular',
+    shortName: 'Glaucoma',
+    iconName: 'Gauge',
+    color: 'from-cyan-500 to-blue-700',
+    badgeColor: 'text-cyan-700 bg-cyan-50 border-cyan-200',
+    description: 'Neuropatías ópticas glaucomatosas, biología celular de la lámina cribosa, dinámica del humor acuoso, gonioscopia dinámica, campimetría Humphrey, OCT estructural, farmacología de colirios, láseres (SLT/LPI), cirugía filtrante y MIGS.',
+    keyTopics: [
+      '1. Neuropatía Óptica Glaucomatosa y Biología Celular: Fisiopatología del daño axonal, muerte por apoptosis de las células ganglionares de la retina (CGR), bloqueo del transporte retrógrado de BDNF, excitotoxicidad por glutamato y remodelación biomecánica de la lámina cribosa.',
+      '2. Dinámica del Humor Acuoso y Presión Intraocular (PIO): Mecanismos de producción en el cuerpo ciliar (secreción activa dependiente de Na+/K+ ATPasa y anhidrasa carbónica vs ultrafiltración), vías de drenaje (trabecular convencional vs uveoescleral no convencional), concepto de PIO meta personalizada (OHTS, AGIS, CIGTS) y fluctuación circadiana nocturna.',
+      '3. Glaucoma Primario de Ángulo Abierto (GPAA): Epidemiología, curso clínico silente/asintomático, factores de riesgo mayores y menores (PIO basal, edad, raza afrodescendiente, córnea delgada <555 um en OHTS, miopía axial, genética MYOC/OPTN) y estrategias de tamizaje poblacional y cribado oportunista.',
+      '4. Glaucoma por Cierre Angular y Gonioscopia: Clasificación ISGEO (PACS, PAC, PACG, APAC), mecanismos de bloqueo pupilar relativo vs no pupilar (síndrome de iris en meseta, componente lenticular/facomórfico, bloqueo ciliar/glaucoma maligno) y evaluación del ángulo iridocorneal mediante gonioscopia de 4 espejos (Shaffer y Spaeth).',
+      '5. Glaucomas Secundarios y Formas Especiales: Manejo integral y particularidades del glaucoma pseudoexfoliativo (gen LOXL1 y debilidad zonular), pigmentario (huso de Krukenberg e iris cóncavo), neovascular (isquemia retiniana con anti-VEGF, PRP y válvula de Ahmed), uveítico (trabeculitis vs sinequias), corticoesteroideo (CLANs trabeculares) y glaucoma de presión normal (GPN: ensayo CNTGS, hemorragias de Drance y dips nocturnos).',
+      '6. Glaucomas Congénitos y Pediátricos: Presentación clínica cardinal (buftalmos, epífora, fotofobia, blefaroespasmo, megalocórnea >12 mm, estrías de Haab por rotura de Descemet y reversibilidad de la excavación), etiología por disgenesia trabecular (CYP1B1, LTBP2) y abordajes quirúrgicos de primera línea (goniotomía si córnea clara vs trabeculotomía circunferencial si córnea opaca).',
+      '7. Evaluación Estructural del Nervio Óptico: Cambios topográficos en el anillo neurorretiniano, regla ISNT y su violación patológica, relación copa/disco (C/D) y asimetría interocular >0.2, muescas focales, hemorragias de disco en astilla (hemorragias de Drance), defectos en cuña de la CFNR de Hoyt y aplicación de la OCT de dominio espectral (TSNIT y mapa macular de células ganglionares GCC).',
+      '8. Evaluación Funcional (Campimetría y Campo Visual): Perimetría computarizada estándar Humphrey (algoritmos SITA-Standard, SITA-Fast y SITA-Faster en cuadrículas 24-2, 24-2C y 10-2), patrones típicos de pérdida (escalón nasal de Rønne respetando el rafe horizontal, escotoma paracentral, escotoma de Seidel y arciforme de Bjerrum) e interpretación de progresión basada en eventos (GPA) y tendencias (VFI/MD dB/año).',
+      '9. Tratamiento Médico y Farmacología Ocular: Familias de colirios (análogos de prostaglandinas que estimulan flujo uveoescleral vía MMPs, betabloqueantes y contraindicación en asma/bloqueo, alfa-2 agonistas y contraindicación en <2 años por apnea, inhibidores tópicos y sistémicos de la anhidrasa carbónica, inhibidores de Rho-quinasa Netarsudil), combinaciones fijas libres de conservantes y adherencia terapéutica.',
+      '10. Procedimientos Láser en Glaucoma: Trabeculoplastia Láser Selectiva (SLT con Nd:YAG 532 nm sin daño térmico según ensayo landmark LiGHT como primera línea), Iridotomía Periférica con YAG (LPI con lente de Abraham y manejo del ojo contralateral), Iridoplastia Láser con Argón en iris en meseta y Ciclofotocoagulación transescleral continua y micropulsada o endoscópica (ECP).',
+      '11. Cirugía Filtrante Convencional e Implantes de Drenaje: Técnica quirúrgica detallada y manejo posoperatorio de la Trabeculectomía (uso de antimetabolitos como Mitomicina C 0.2-0.4 mg/mL, suturas liberables y lisis con láser), Esclerectomía Profunda No Perforante (EPNP) y dispositivos de tubo/válvula (Válvula de Ahmed restrictiva vs Implante de Baerveldt con ligadura según el ensayo TVT).',
+      '12. Cirugía Mínimamente Invasiva de Glaucoma (MIGS) e Innovación: Dispositivos microinvasivos trabeculares (iStent inject, Hydrus Microstent), canaloplastia (OMNI), implantes de filtración subconjuntival (XEN Gel Stent con MMC, PreserFlo MicroShunt), implantes supracoroideos (MINIject), sistemas intraoculares de liberación prolongada (Durysta, iDose TR), neuroprotección (citicolina, nicotinamida) y telemetría continua de la PIO (iCare HOME, Triggerfish).',
+      '13. Glaucoma Maligno (Síndrome de Desvío del Humor Acuoso / Bloqueo Ciliar): Atalamia axial uniforme central y periférica con PIO elevada tras cirugía incisional con iridotomía patente; ecografía B para descartar desprendimiento o hematoma; tratamiento médico de choque con Atropina 1% (relajación ciliar posterior) y Manitol (¡Pilocarpina formalmente contraindicada!); capsulotomía/hialoidotomía YAG o vitrectomía ZHV vía pars plana.',
+      '14. Síndrome Iridocorneal Endotelial (ICE): Proliferación metaplásica de células endoteliales en plata martillada que migran sobre la malla trabecular; variantes de Chandler (edema corneal severo con PIO moderada), Atrofia Esencial de Iris (corectopia, agujeros y pseudopolicoria) y Síndrome de Cogan-Reese (nódulos pigmentados); manejo con tubos valvulados.',
+      '15. Glaucomas Facogénicos: Glaucoma Facolítico (cápsula intacta y cámara profunda con macrófagos y proteínas HMW), Facomórfico (catarata intumescente voluminosa con cámara plana y cierre angular), por Partículas Lenticulares (restos corticales en ángulo) y Facoantigénico (reacción inmune granulomatosa con precipitados en grasa de carnero); lensectomía curativa.',
+      '16. Hipertensión Venosa Epiescleral: Elevación 1:1 de la PIO (Ecuación de Goldmann); Síndrome de Sturge-Weber (nevus flammeus en V1, hemangioma en salsa de tomate y riesgo crítico de hemorragia expulsiva / efusión coroidea en cirugía) y Fístula Carótido-Cavernosa (FCC: vasos en tirabuzón, quemosis y soplo orbitario auscultable).',
+      '17. Glaucoma por Recesión Angular y Trauma Ocular Contuso: Desgarro entre fibras musculares longitudinales y circulares del cuerpo ciliar; espolón escleral blanco prominente y banda ciliar ensanchada en gonioscopia; glaucoma tardío insidioso a los 10-20 años por endotelización trabecular (riesgo >50% si recesión >180-240 grados; SLT contraindicada).',
+      '18. Síndrome Isquémico Ocular (OIS) y Glaucoma Post-Vitrectomía: Estenosis carotídea ipsilateral >90%; la "paradoja tensional" (rubeosis iridis con PIO normal o baja por isquemia ciliar que se dispara a >50 mmHg tras endarterectomía carotínea al reactivarse la secreción acuosa); aclaramiento acelerado de VEGF post-vitrectomía.',
+      '19. Glaucoma de Presión Normal (GPN) y Banderas Rojas ("Red Flags"): Ensayo CNTGS (reducción del 30% frena progresión); factores no tensionales (Raynaud, migraña, apnea obstructiva del sueño, nocturnal dips por antihipertensivos nocturnos); hemorragias de Drance y escotomas paracentrales; algoritmo de neuroimagen obligada ante disociación palidez > excavación o respeto del meridiano vertical.',
+      '20. Complicaciones Postquirúrgicas de Cirugías Filtrantes: Hipotonía y maculopatía hipotónica (pliegues coriorretinianos y papiledema); atalamia (clasificación de Spaeth); fuga de ampolla temprana y tardía (Seidel positivo bajo MMC); espectro infeccioso (Blebitis localizada vs Endoftalmitis por Streptococcus y Moraxella con punción vítrea urgente); y manejo de ampolla enquistada (Quiste de Tenon) con needling y 5-FU.',
+      '21. Manejo del Glaucoma en el Embarazo y la Lactancia: Descenso fisiológico de la PIO gestacional (progesterona y relaxina); teratogenicidad FDA; Brimonidina (Categoría B en gestación pero ¡MORTAL EN LACTANCIA por apnea central y coma neonatal!); prostaglandinas (riesgo de parto pretérmino); betabloqueantes y bradicardia fetal; maniobra de oclusión lagrimonasal (NLO); y seguridad de la SLT.',
+      '22. Paquimetría Corneal, Histéresis y Biomecánica Ocular: Evidencia OHTS (córneas <555 um triplican riesgo de glaucoma); biofísica de Goldmann; falacia y prohibición de fórmulas matemáticas lineales de corrección de PIO (EGS/AAO); Histéresis Corneal (CH) y Factor de Resistencia Corneal (CRF) mediante ORA; Corvis ST; y correlación viscoelástica directa entre córnea y lámina cribosa.',
+      '23. Síndrome de Dispersión Pigmentaria (SDP) y Glaucoma Pigmentario: Fisiopatología del bloqueo pupilar invertido (cóncavo) y fricción iridozonular en varones jóvenes miopes; tríada de Huso de Krukenberg, transiluminación en rueda de carro en media periferia y malla trabecular 4+ con línea de Sampaolesi; picos por ejercicio; fenómeno de burnout tardío; e iridotomía periférica YAG.',
+      '24. Síndrome de Pseudoexfoliación (PEX) y Glaucoma Capsular: Genética LOXL1; elastosis microfibrilar sistémica; patrón en 3 zonas en cápsula anterior del cristalino y caspa pupilar; zonulopatía severa y facodonesis; desafíos en facoemulsificación (anillos de tensión capsular CTR, Malyugin); luxación tardía espontánea del complejo saco-LIO a los 5-10 años; y SLT a baja energía.',
+      '25. Glaucoma Uveítico, Síndrome de Posner-Schlossman y Ciclitis de Fuchs: Trabeculitis aguda vs bloqueo sinequial (iris bombé); Crisis Glaucomatociclítica (Posner-Schlossman: PIO 40-50 mmHg con inflamación mínima unilateral por CMV/HSV, tratamiento con corticoides, hipotensores y ganciclovir; ¡prostaglandinas contraindicadas!); y Síndrome de Fuchs (precipitados estrellados difusos 360°, heterocromía, ¡ausencia patognomónica de sinequias posteriores!, signo de Amsler y catarata).'
+    ],
+    anatomicalStructures: [
+      'Malla trabecular (uveal, corneoescleral y yuxtacanalicular cribiforme)',
+      'Canal de Schlemm y canales colectores acuosos',
+      'Venas epiesclerales (Presión venosa epiescleral Pe: 8-10 mmHg)',
+      'Procesos ciliares (epitelio ciliar pigmentado y no pigmentado)',
+      'Ángulo iridocorneal y raíz del iris',
+      'Lámina cribosa escleral y espacio subaracnoideo perióptico',
+      'Células ganglionares retinianas (axones y somas maculares)',
+      'Diafragma iridocristaliniano y cara hialoidea anterior'
+    ],
+    referenceGuidelines: 'European Glaucoma Society (EGS 5th Ed) / AAO BCSC Section 10: Glaucoma / Landmark Trials (OHTS, LiGHT, EMGT, AGIS, TVT, EAGLE, CNTGS)',
+    highYieldTips: [
+      'Regla ISNT: El reborde neurorretiniano fisiológico es más grueso Inferior > Superior > Nasal > Temporal. Su violación es el signo clínico más sensible de glaucoma.',
+      'En ataque agudo por cierre angular: Contraindicados los midriáticos. Administrar manitol IV al 20% + acetazolamida oral/IV + hipotensores tópicos. Instilar pilocarpina 2% SOLO cuando la PIO haya bajado de 30-40 mmHg (antes el esfínter pupilar está isquémico y paralizado). Realizar SIEMPRE iridotomía periférica YAG profiláctica en el ojo contralateral.',
+      'Glaucoma Maligno: Cámara anterior totalmente plana central y periférica con PIO alta e iridotomía patente. Tratar con ATROPINA 1% (relaja el cuerpo ciliar hacia atrás). ¡La Pilocarpina está CONTRAINDICADA de forma absoluta por empujar el diafragma hacia adelante!',
+      'Glaucoma Facolítico vs Facomórfico: En Facolítico la cámara anterior es PROFUNDA y la cápsula está intacta (obstrucción trabecular por macrófagos gigantes). En Facomórfico la cámara anterior es PLANA por catarata intumescente. En ambos la extracción del cristalino es curativa.',
+      'Síndrome de Sturge-Weber y Cirugía: La descompresión tensional rápida en trabeculectomía expande el hemangioma coroideo difuso provocando efusión coroidea masiva o hemorragia expulsiva fulminante. Exige esclerotomías posteriores profilácticas y cámara presurizada con viscoelástico.',
+      'Síndrome Isquémico Ocular (OIS): Estenosis carotídea >90%. Cursa con rubeosis iridis paradójica con PIO normal o baja por isquemia del epitelio ciliar. Al realizar la endarterectomía carotídea, la PIO se dispara masivamente en las primeras 48 horas al reanudarse la secreción acuosa.',
+      'En glaucomas pediátricos: La Brimonidina está TERMINANTEMENTE CONTRAINDICADA en menores de 2 años por cruzar la barrera hematoencefálica inmadura provocando depresión del SNC, letargia y parada respiratoria/apnea.'
+    ]
+  },
+  {
+    id: 'retina',
+    name: 'Retina Médica y Quirúrgica',
+    shortName: 'Retina',
+    iconName: 'ScanEye',
+    color: 'from-rose-500 to-red-700',
+    badgeColor: 'text-rose-700 bg-rose-50 border-rose-200',
+    description: 'Patologías maculares, vasculopatías retinianas isquémicas, desprendimiento de retina regmatógeno y traccional, interfase vitreomacular, espectro paquicoroides, endoftalmitis, ROP y distrofias hereditarias.',
+    keyTopics: [
+      'DMAE Neovascular, Biomarcadores en SD-OCT y Ensayos Pivotales Anti-VEGF (CATT, TENAYA, PULSAR)',
+      'Edema Macular Diabético y Retinopatía Diabética Proliferativa (Protocolos DRCR.net T, V, S)',
+      'Oclusiones Vasculares Retinianas: Arteriales (OACR / Código Ictus) y Venosas (OVCR / Ensayos COPERNICUS)',
+      'Desprendimiento de Retina Regmatógeno: Reglas de Lincoff, PVR y Cirugía Escleral vs Vitrectomía',
+      'Interfase Vitreomacular: Membrana Epirretiniana Macular (MER) y Síndrome de Tracción Vitreomacular (VMT)',
+      'Agujero Macular Idiopático: Clasificaciones Gass e IVTS, Pelado de ILM y Flap Invertido de Michalewska',
+      'Espectro Paquicoroides y Coriorretinopatía Serosa Central (CSC): Ensayo PLACE y TFD Media Dosis',
+      'DMAE Seca, Atrofia Geográfica Avanzada y Modulación de la Vía del Complemento (Pegcetacoplán, Avacincaptad)',
+      'Desprendimiento de Retina Traccional y Mixto en Diabetes: Fenómeno Crunch y Técnicas de Vitrectomía',
+      'Endoftalmitis Infecciosa Aguda Posquirúrgica y Traumática: Protocolo EVS (Criterio PL) y Antibióticos Intravítreos',
+      'Retinopatía del Prematuro (ROP): Clasificación ICROP-3, Ensayo ETROP Tipo 1 y Anti-VEGF (BEAT-ROP, RAINBOW)',
+      'Distrofias Hereditarias de la Retina: Retinosis Pigmentaria, Enfermedad de Stargardt y Terapia Génica Luxturna',
+      'Telangiectasias Maculares Tipo 2 (MacTel 2): Pérdida de células de Müller, cavidades atróficas y terapia con implante celular de CNTF (Revakinagene)',
+      'Espectro Paquicoroides Avanzado: Epiteliopatía Pigmentaria Paquicoroidea (PPE), Neovasculopatía Paquicoroidea (PNV), Vasculopatía Polipoidea Coroidea (PCV) y TFD de Media Fluencia'
+    ],
+    anatomicalStructures: [
+      'Fóvea, foveola y zona avascular foveal (FAZ)',
+      'Membrana limitante interna (ILM) y corteza vítrea posterior',
+      'Fotorreceptores (capa nuclear externa, elipsoide y segmentos externos)',
+      'Epitelio pigmentario de la retina (EPR) y membrana de Bruch',
+      'Coriocapilar, vasos de Sattler y paquivasos de Haller',
+      'Capa de fibras nerviosas de la retina (CFNR) y células ganglionares',
+      'Ora serrata, base del vítreo y lámina cribosa'
+    ],
+    referenceGuidelines: 'AAO BCSC Section 12: Retina and Vitreous / EURETINA Guidelines / DRS, ETDRS, DRCR.net, EVS, ETROP, ICROP-3',
+    highYieldTips: [
+      'En Oclusión de Arteria Central de la Retina (OACR): Es un equivalente de ACV/Ictus agudo. Activar inmediatamente Código Ictus sistémico; ventana de viabilidad retiniana <90-100 minutos. Descartar arteritis de células gigantes si el paciente tiene >50 años.',
+      'Reglas de Lincoff para DRR: En el 98% de los desprendimientos de retina regmatógenos primarios, la forma del contorno de fluido subretiniano predice con precisión la localización horaria del desgarro causal.',
+      'Criterio EVS para Endoftalmitis: Pacientes con agudeza visual de Percepción de Luz (PL) requieren Vitrectomía Pars Plana de urgencia obligatoria (triplica la probabilidad de visión útil 20/40 frente al tap+antibióticos aislados).',
+      'Fenómeno Crunch en DRT Diabético: Administrar anti-VEGF preoperatorio sólo de 3 a 5 días antes de la vitrectomía. Retrasar la cirugía más de 7-10 días provoca contracción cicatrizal violenta y rotura macular masiva.',
+      'Coriorretinopatía Serosa Central y Corticoides: NUNCA prescribir esteroides (tópicos, sistémicos o inhalados) a un paciente con CSC; los glucocorticoides exacerban catastróficamente el desprendimiento seroso y la hiperpermeabilidad coroidea.',
+      'Enfermedad de Stargardt: Contraindicación absoluta de suplementos con Vitamina A (acelera la biosíntesis citotóxica de lipofuscina y dímeros A2E).',
+      'Retinopatía del Prematuro (ROP): Zona I con cualquier estadio de enfermedad Plus o Estadio 3 en Zona I constituye ROP Tipo 1 según ETROP, requiriendo tratamiento antiangiogénico o láser en <72 horas.'
+    ]
+  },
+  {
+    id: 'catarata',
+    name: 'Cristalino y Cirugía de Catarata',
+    shortName: 'Catarata',
+    iconName: 'CircleDot',
+    color: 'from-amber-500 to-orange-700',
+    badgeColor: 'text-amber-700 bg-amber-50 border-amber-200',
+    description: 'Fisiopatología del cristalino, clasificación LOCS III, biometría óptica, fórmulas de LIO modernas, facoemulsificación y manejo de complicaciones.',
+    keyTopics: [
+      'Fisiopatología del Cristalino, Bioquímica y Clasificación Morfológica LOCS III (NO, NC, C, P)',
+      'Biometría Óptica Avanzada y Fórmulas de LIO: De Vergens a IA (Barrett, Kane, Hill-RBF) y Ojos Post-Refractiva (Post-LASIK/RK)',
+      'Dinámica de Fluidos y Máquinas de Facoemulsificación: Bombas Peristálticas vs Venturi, Surge Post-Oclusión y Ultrasonido Torsional',
+      'Estrategias de Nucleotomía y Facodinamia: Divide and Conquer, Stop & Chop, Phaco Chop y Manejo de Cataratas Duras',
+      'Complicaciones Mayores Intraoperatorias: Rotura Capsular Posterior (PCR), Vitrectomía Anterior Bimanual y Caída de Núcleo',
+      'Debilidad Zonular, Subluxación de Cristalino y Fijación Escleral sin Sutura (Técnica de Doble Aguja de Yamane)',
+      'Manejo de Pupila Pequeña y Síndrome de Iris Flácido Intraoperatorio (IFIS por Tamsulosina)',
+      'Catarata Polar Posterior: Fisiopatología, Hidrodelineación Pura sin Hidrodissección y Prevención de PCR',
+      'Síndrome Tóxico del Segmento Anterior (TASS) vs Endoftalmitis Postquirúrgica Aguda (Ensayo EVS y Profilaxis ESCRS)',
+      'Edema Macular Cistoide Pseudofáquico (Síndrome de Irvine-Gass): Fisiopatología, Ensayo PREMED y Terapéutica',
+      'Lentes Intraoculares Tóricas y Premium para Presbicia: EDOF, Trifocales, Corrección de Astigmatismo y Disfotopsias',
+      'Opacificación Capsular Posterior (PCO), Biología de Células Epiteliales del Cristalino y Capsulotomía con Nd:YAG',
+      'Cirugía Asistida por Láser de Femtosegundo (FLACS): Capsulotomía fotodisruptiva, fragmentación nuclear, síndrome de bloqueo capsular y comparativa vs Faco Manual',
+      'Facoemulsificación en Ojos Vitrectomizados y Altos Miopes: Síndrome de Infusión Inversa (LIDRS), debilidad zonular y selección de LIOs acrílicos hidrofóbicos'
+    ],
+    anatomicalStructures: [
+      'Cápsula del cristalino (anterior 14 µm y posterior 4 µm)',
+      'Epitelio subcapsular anterior (células A) y zona ecuatorial germinativa (células E)',
+      'Corteza cristaliniana, epinúcleo y núcleo lenticular (embrionario, fetal y del adulto)',
+      'Fibras zonulares de Zinn y lámina cribosa ciliar',
+      'Espacio retroretrolental de Berger y ligamento de Wieger (adherencia vitriocristaliniana)',
+      'Saco capsular, surco ciliar y pars plana escleral (3.5 mm del limbo)'
+    ],
+    referenceGuidelines: 'AAO BCSC Section 11: Lens and Cataract / ESCRS Guidelines for Cataract Surgery & Endophthalmitis / PREMED Study Group / ASCRS Refractive Cataract Surgery Guidelines',
+    highYieldTips: [
+      'Regla de oro ante sospecha de Rotura Capsular Posterior (PCR): NUNCA retirar la pieza de mano ni soltar el pedal bruscamente. Mantener el pie en posición 1 de irrigación para no descomprimir la cámara anterior, inyectar OVD dispersivo a través de la paracentesis lateral para taponar la brecha y estabilizar el vítreo, y solo entonces retirar la punta del facoemulsificador.',
+      'Cálculo de LIO post-cirugía refractiva (LASIK miópico): El queratómetro estándar asume un índice refractivo corneal ficticio de 1.3375 basado en una relación cara anterior/posterior intacta (82%). Al ablacionar el estroma anterior, esta relación se altera, sobreestimando la potencia corneal y llevando a un cálculo infraestimado de LIO con sorpresa postoperatoria hipermetrópica. Utilizar Barrett True-K con o sin historial queratométrico.',
+      'En Síndrome de Iris Flácido Intraoperatorio (IFIS por antagonistas alfa-1A sistémicos como Tamsulosina): Suspender la tamsulosina días antes de la cirugía NO previene el síndrome debido a la atrofia irreversible inducida en el músculo dilatador del iris. Administrar intracameralmente fenilefrina/lidocaína sin conservantes e implantar dispositivos de soporte mecánico pupilares como el anillo de Malyugin.',
+      'En Catarata Polar Posterior: La hidrodissección vigorosa está ESTRICTAMENTE CONTRAINDICADA debido al riesgo del 26-36% de rotura capsular posterior inmediata por adherencia directa de la placa a la cápsula posterior adelgazada. Realizar hidrodelineación pura (anillo dorado "golden ring") para desempacar el núcleo interno preservando una concha protectora de epinúcleo.',
+      'Diferenciación crítica TASS vs Endoftalmitis Aguda: El TASS debuta dentro de las primeras 12 a 24 horas del postoperatorio, con edema corneal "de limbo a limbo" por toxicidad endotelial, cámara anterior con hipopion estéril, PIO elevada y respuesta fulminante a corticoides tópicos intensivos. La endoftalmitis bacteriana infecciosa debuta típicamente entre el 3º y 7º día con dolor severo, quemosis y celularidad vítrea.',
+      'Técnica de Yamane (Fijación Escleral sin Sutura con Doble Aguja): Inserción de agujas de pared delgada 27G o 30G TSK a 2.0 mm del limbo a través de túneles esclerales angulados de 1.5 a 2.0 mm de longitud a 180° de separación. Los hápticos de PVDF se canulan y se exteriorizan simultáneamente, y sus extremos se cauterizan suavemente con termocauterio para crear rebordes esféricos de brida de 0.3 mm que quedan anclados anatómicamente bajo la conjuntiva.',
+      'Profilaxis de Endoftalmitis según el Ensayo ESCRS: La inyección intracameral de Cefuroxima (1.0 mg en 0.1 mL) al finalizar la facoemulsificación reduce la incidencia de endoftalmitis infecciosa postoperatoria en casi un factor de 5 a 6 veces (de 0.34% a 0.05-0.07%).'
+    ]
+  },
+  {
+    id: 'neuroftalmologia',
+    name: 'Neuroftalmología',
+    shortName: 'Neuroftalmo',
+    iconName: 'Brain',
+    color: 'from-purple-500 to-indigo-700',
+    badgeColor: 'text-purple-700 bg-purple-50 border-purple-200',
+    description: 'Vía visual aferente y eferente, neuropatías ópticas desmielinizantes e isquémicas, papiledema, parálisis oculomotoras, anomalías pupilares, miastenia gravis y vía retroquiasmática.',
+    keyTopics: [
+      'Neuritis Óptica Desmielinizante (Ensayo ONTT, Esclerosis Múltiple, NMOSD Anti-AQP4 y MOGAD)',
+      'Parálisis Oculomotoras de Pares Craneales (III, IV y VI): Pupila de Aneurisma de PCoA, Test de Bielschowsky e Hipertensión Intracraneal',
+      'Papiledema e Hipertensión Intracraneal Idiopática (Criterios de Friedman, Escala de Frisén y Ensayo NORDIC)',
+      'Neuropatía Óptica Isquémica Anterior: Arterítica (NOIA-A / Arteritis de Células Gigantes) vs No Arterítica (NOIA-NA / Crowded Disc)',
+      'Anomalías Pupilares y Vía Aferente/Eferente: Pupila de Marcus Gunn (DPAR), Síndrome de Horner (Apraclonidina) y Pupila de Adie (Pilocarpina Diluida)',
+      'Miastenia Gravis Ocular, Oftalmoplejía Internuclear (INO) y Nistagmo Patológico',
+      'Síndrome Quiasmático (Macroadenomas, Apoplejía Hipofisaria) y Lesiones Retrogeniculadas de la Vía Visual',
+      'Neuropatías Ópticas Hereditarias y Mitocondriales: Neuropatía de Leber (LHON) y Atrofia Óptica Dominante (OPA1)',
+      'Neuropatía Óptica Traumática (TON): Mecanismos directos vs indirectos en el canal óptico, TC óseo de alta resolución y controversia terapéutica (ensayos IONTS y CRASH)',
+      'Distonías Faciales y Perioculares: Espasmo Hemifacial vs Blefaroespasmo Esencial Benigno, conflicto neurovascular en REZ y quimiodenervación con Toxina Botulínica'
+    ],
+    anatomicalStructures: [
+      'Nervio óptico (segmentos: intraocular 1 mm, intraorbitario 25-30 mm en S, intracanalicular 6-9 mm, intracraneal 10-16 mm)',
+      'Quiasma óptico y rodilla anterior de Wilbrand',
+      'Cintillas ópticas y tracto retinotectal pupilar',
+      'Cuerpo geniculado lateral (capas magnocelulares 1-2 y parvocelulares 3-6)',
+      'Radiaciones ópticas (Asa de Meyer temporal y haz parietal)',
+      'Corteza estriada calcarina (área 17 de Brodmann con doble irrigación macular)',
+      'Núcleos oculomotores de tronco (III en mesencéfalo, IV dorsal y VI en puente)',
+      'Fascículo Longitudinal Medial (FLM) y vía oculosimpática de tres neuronas'
+    ],
+    referenceGuidelines: 'NANOS Guidelines / AAO BCSC Section 5: Neuro-Ophthalmology / Ensayos ONTT y NORDIC',
+    highYieldTips: [
+      'Regla de la Pupila en el III Par: La parálisis con midriasis arreactiva o incompleta es un aneurisma de la arteria comunicante posterior (PCoA) hasta demostrar lo contrario. Requiere Angio-TC/Angio-RM urgente.',
+      'Sospecha de Arteritis de Células Gigantes (NOIA-A): Iniciar de inmediato pulsos de metilprednisolona IV 1 g/día durante 3 días antes de esperar la biopsia de arteria temporal. La biopsia permanece diagnóstica hasta 2-4 semanas después.',
+      'Defecto Pupilar Aferente Relativo (DPAR de Marcus Gunn): NUNCA se produce en cataratas ni en opacidades densas de medios (la luz se dispersa difusamente en la retina); su presencia indica patología asimétrica del nervio óptico o desprendimiento extenso de retina.',
+      'Test Farmacológico de Horner: Apraclonidina al 0.5% produce "reversión de la anisocoria" (dilata la pupila de Horner por supersensibilidad por denervación alfa-1 y eleva el párpado caído) y confirma el diagnóstico de forma ambulatoria inmediata.',
+      'Test Farmacológico de la Pupila Tónica de Adie: Pilocarpina muy diluida al 0.1% o 0.125% contrae potentemente la pupila afectada debido a supersensibilidad de denervación colinérgica posganglionar, mientras que la pupila sana contralateral no responde.',
+      'Oftalmoplejía Internuclear (INO): Déficit de aducción ipsilateral a la lesión con nistagmo disociado en abducción del ojo contralateral, causado por lesión del Fascículo Longitudinal Medial (FLM). Si es bilateral en adulto joven = Esclerosis Múltiple; si es unilateral en adulto mayor = Accidente cerebrovascular isquémico de tronco.',
+      'Neuropatía de Leber (LHON): Pérdida visual indolora secuencial en varones jóvenes (mutación m.11778G>A en el 70%); la OCT y retinografía muestran pseudoedema de papila hiperémico y telangiectasias peripapilares microangiopáticas sin fuga en la angiografía fluoresceínica.'
+    ]
+  },
+  {
+    id: 'uveitis',
+    name: 'Uveítis e Inflamación Ocular',
+    shortName: 'Uveítis',
+    iconName: 'Flame',
+    color: 'from-orange-500 to-rose-700',
+    badgeColor: 'text-orange-700 bg-orange-50 border-orange-200',
+    description: 'Clasificación SUN, uveítis anteriores, intermedias, posteriores y panuveítis; causas infecciosas (Toxoplasma, Sífilis, Tuberculosis) y autoinmunes.',
+    keyTopics: [
+      'Clasificación Estandarizada SUN, Tipología de Precipitados Queráticos y Uveítis Anterior HLA-B27',
+      'Uveítis en Artritis Idiopática Juvenil (AIJ) y Uveítis Pediátrica Silenciosa ("Ojo Blanco")',
+      'Uveítis Intermedia, Pars Planitis (Snowbanks/Snowballs) y Descarte de Esclerosis Múltiple',
+      'Toxoplasmosis Ocular Activa: Retinocoroiditis Satélite en "Faro en la Niebla" y Regímenes Antiparasitarios',
+      'Sífilis Ocular y Neurosífilis ("La Gran Simuladora", Coriorretinitis Placoide ASPPC y Penicilina IV)',
+      'Tuberculosis Intraocular, Coroiditis Serpiginosa-Like y Algoritmo Inmuno-Diagnóstico (PPD/IGRA)',
+      'Síndrome de Vogt-Koyanagi-Harada (VKH) y Oftalmía Simpática (Nódulos de Dalen-Fuchs y Ventana de Enucleación)',
+      'Vasculitis Retiniana Autoinmune: Enfermedad de Behçet (Arteritis Oclusiva) y Sarcoidosis Ocular (Periflebitis)',
+      'Síndromes de Necrosis Retiniana Viral por Herpesviridae: ARN vs PORN y Terapia Antiviral Urgente',
+      'Síndromes de Puntos Blancos y Coroidopatías Inflamatorias (MEWDS, APMPPE, Birdshot HLA-A29, Serpiginosa, MCP/PIC)',
+      'Síndromes de Mascarada: Linfoma Intraocular Primario del SNC (PCNSL / DLBCL) y Vitrectomía Diagnóstica',
+      'Farmacoterapia Inmunomoduladora en Uveítis: Corticoides, Ahorradores, Terapia Biológica Anti-TNF-α (Adalimumab) y Ensayos Clínicos (MUST, VISUAL, FAST)',
+      'Enfermedad de Behçet Ocular: Vasculitis oclusiva retinal necrotizante bilateral, hipopión frío móvil, HLA-B51 y terapia biológica anti-TNF (Infliximab/Adalimumab)',
+      'Sarcoidosis Ocular: Granulomas no caseificantes, precipitados en grasa de carnero, periflebitis en cera de vela, criterios IWOS y biomarcadores (ECA, lisozyma, HRCT)'
+    ],
+    anatomicalStructures: [
+      'Iris y cuerpo ciliar (Pars plicata y Pars plana)',
+      'Coroides (Coriocapilar, Sattler, Haller)',
+      'Barrera hematoacuosa y hematorretiniana',
+      'Espacio sub-EPR y membrana de Bruch',
+      'Cavidad vítrea y base del vítreo',
+      'Vasculatura retiniana (arteriolas y vénulas)'
+    ],
+    referenceGuidelines: 'SUN Standardization Criteria / AAO BCSC Section 9: Intraocular Inflammation and Uveitis / IUSG Consensus / Ensayos MUST, VISUAL I-II, FAST, SYCAMORE',
+    highYieldTips: [
+      'Uveítis Anterior HLA-B27: Hipopión móvil rico en fibrina; la causa sistémica número uno es la Espondilitis Anquilosante si asocia lumbalgia inflamatoria matutina.',
+      'Toxoplasmosis Ocular: NUNCA administrar corticosteroides sistémicos ni locales en monoterapia sin cobertura antiparasitaria previa; provocan necrosis retiniana fulminante descontrolada.',
+      'Toda Sífilis Ocular se maneja como NEUROSÍFILIS: Requiere Penicilina G Sódica acuosa 18 a 24 millones UI/día IV durante 10 a 14 días. Las inyecciones intramusculares de penicilina benzatínica son ineficaces e insuficientes.',
+      'En Uveítis Pediátrica por AIJ: Típicamente cursa con "ojo blanco silencioso" asintomático. La tríada clásica tardía es Queratopatía en banda + Catarata complicada + Glaucoma.',
+      'Uveítis Intermedia y Adultos Jóvenes: Es mandatorio solicitar Resonancia Magnética Cerebral con contraste para descartar Esclerosis Múltiple; si hay lesiones desmielinizantes, los agentes anti-TNF-α (Adalimumab/Infliximab) están formalmente contraindicados.',
+      'Necrosis Retiniana Aguda (ARN): Emergencia oftalmológica viral (VZV/HSV); requiere inyección intravítrea inmediata de Ganciclovir/Foscarnet + Valaciclovir/Aciclovir sistémico; riesgo masivo (>50%) de desprendimiento de retina por desgarros gigantes.',
+      'Linfoma Intraocular Primario (Mascarada): Adulto mayor con vitritis crónica refractaria a esteroides. Requiere vitrectomía en fresco + ratio IL-10/IL-6 > 1 + mutación MYD88 L265P (suspender corticoides 2-3 semanas antes de la biopsia).'
+    ]
+  },
+  {
+    id: 'pediatria',
+    name: 'Estrabismo y Oftalmopediatría',
+    shortName: 'Pediatría',
+    iconName: 'Baby',
+    color: 'from-pink-500 to-purple-700',
+    badgeColor: 'text-pink-700 bg-pink-50 border-pink-200',
+    description: 'Desarrollo visual binocular, ambliopía, estrabismos comitantes e incomitantes, retinopatía del prematuro (ROP), leucocoria, anomalías del desarrollo del segmento anterior y nistagmo infantil.',
+    keyTopics: [
+      'Retinopatía del Prematuro (ROP) y Fundamentos de Estrabismo Pediátrico (Guías ICROP-3, Zonas, Estadios, Plus y Anti-VEGF vs Láser)',
+      'Endotropias Infantiles y Acomodativas: Endotropia Infantil Esencial vs Acomodativa Refractiva y Cirugía de Músculos Rectos',
+      'Leucocoria en la Infancia: Algoritmo Diagnóstico Crítico (Retinoblastoma vs Enfermedad de Coats vs PHPV vs Catarata Congénita)',
+      'Exotropias Infantiles e Intermitentes y Patrones Alfabéticos (Síndromes en V y en A por Disfunción de Músculos Oblicuos)',
+      'Estrabismos Incomitantes Complejos y Síndromes de Restricción: Duane Tipo 1, 2 y 3, Síndrome de Brown y Fibrosis Congénita (CFEOM)',
+      'Anomalías del Desarrollo del Segmento Anterior: Aniridia Congénita (PAX6 / Síndrome WAGR) y Espectro de Peters / Disgenesias de Cresta Neural',
+      'Nistagmo Infantil, Hipoplasia Foveal y Albinismo Ocular / Oculocutáneo',
+      'Obstrucción Congénita de la Vía Lagrimal (CNLDO) y Facomatosis Oculares Pediátricas (NF1 y Sturge-Weber)',
+      'Ambliopía Estrábica y Anisometrópica: Neurobiología visual cortical, umbrales de refracción AAPOS y protocolos clínicos de oclusión y penalización farmacológica PEDIG ATS',
+      'Parálisis Congénita del IV Par Craneal e Hipertropias: Test de Tres Pasos de Parks-Bielschowsky, signos de cronicidad y cirugía escalonada de oblicuos (Miectomía de OI / Harada-Ito)'
+    ],
+    anatomicalStructures: [
+      'Músculos rectos horizontales y verticales con poleas fibromusculares',
+      'Músculos oblicuos (superior con su tróclea cartilaginosa e inferior con su inserción macular)',
+      'Zona avascular foveal neonatal y retina periférica nasal y temporal inmaduras',
+      'Vía lagrimal pediátrica: válvula de Hasner distal y válvula de Rosenmüller proximal',
+      'Cámara anterior, malla trabecular embrionaria y células de la cresta neural',
+      'Arteria hialoidea primitiva y túnica vasculosa lentis fetal'
+    ],
+    referenceGuidelines: 'AAPOS / ICROP 3rd Edition / AAO BCSC Section 6: Pediatric Ophthalmology and Strabismus / PEDIG Trials',
+    highYieldTips: [
+      'Leucocoria Pediátrica: Retinoblastoma es la sospecha inicial de emergencia en menores de 3 años. Está formalmente contraindicada la punción diagnóstica intraocular (PAAF) por riesgo fatal de diseminación tumoral extraocular.',
+      'Catarata Congénita Unilateral Densa: Requiere lensectomía con vitrectomía anterior antes de las 6 semanas de vida (y antes de las 8-10 semanas en bilateral) para evitar ambliopía por deprivación sensorial irreversible.',
+      'Endotropia Acomodativa Pura: La desviación desaparece por completo (ortotropia a distancia y cerca) con la prescripción del error refractivo hipermetrópico total obtenido bajo cicloplejía estricta con ciclopentolato al 1%.',
+      'Síndrome de Duane Tipo 1: Deficiencia de abducción con aducción conservada o discretamente limitada, asociada a enoftalmos y estrechamiento de la hendidura palpebral en aducción por cocontracción simultánea de rectos medial y lateral (inervación anómala del RL por el III par).',
+      'Fractura Orbitaria "Trapdoor" Blanca en Niños: Ausencia de equimosis o deformidad externa visible pero con limitación severa de supraducción/infraducción, dolor y reflejo oculocardíaco (náuseas, vómitos, bradicardia potencialmente letal). Requiere liberación quirúrgica de emergencia (<24-48 horas) para evitar necrosis isquémica del recto inferior.',
+      'Aniridia y Tumor de Wilms (Síndrome WAGR): Toda aniridia esporádica en un recién nacido requiere estudio citogenético/molecular para deleción 11p13 (genes PAX6 y WT1) y ecografía renal protocolizada cada 3 meses hasta los 8 años de vida para detección precoz de nefroblastoma.',
+      'Test de Kestenbaum-Anderson en Nistagmo: La cirugía de traspaso muscular siempre opera los músculos para rotar ambos ojos en la DIRECCIÓN DEL TORTÍCOLIS compensatorio, centrando la zona nula en la posición primaria de la mirada.'
+    ]
+  },
+  {
+    id: 'oculoplastica',
+    name: 'Oculoplástica, Órbita y Vía Lagrimal',
+    shortName: 'Oculoplástica',
+    iconName: 'Sparkles',
+    color: 'from-teal-500 to-emerald-700',
+    badgeColor: 'text-teal-700 bg-teal-50 border-teal-200',
+    description: 'Anatomía palpebral y orbitaria, ptosis palpebral, entropión y ectropión, tumores malignos perioculares, patología de la vía lagrimal, traumatismos y fracturas orbitarias, y orbitopatía tiroidea de Graves.',
+    keyTopics: [
+      'Orbitopatía Tiroidea de Graves (EUGOGO): Estadificación CAS, Clasificación VISA, Teprotumumab y Cirugía Descompresiva Orbitaria',
+      'Ptosis Palpebral Quirúrgica: Aponeurótica Involutiva vs Congénita vs Miogénica / Neurogénica (MRD1, Función del Elevador, Fasanella-Servat y Suspensión Frontal)',
+      'Celulitis Preseptal vs Orbitaria Postseptal (Criterios de Chandler, TAC de Cortes Finos y Abscesos Subperiósticos) y Traumatismo Orbitario',
+      'Malposiciones Palpebrales: Ectropión (Involutivo, Cicatrizal, Paralítico) y Entropión (Involutivo vs Cicatrizal) y Técnica de Tira Tarsal Lateral (LTS)',
+      'Patología Obstructiva e Inflamatoria de la Vía Lagrimal en el Adulto: Dacriocistitis Aguda, Litiasis y Dacriocistorrinostomía (DCR Externa vs Endoscópica)',
+      'Tumores Malignos Palpebrales: Carcinoma Basocelular (BCC), Carcinoma de Glándulas Sebáceas (SGC), Carcinoma Espinocelular y Técnicas de Reconstrucción (Hughes, Mustardé, Tenzel)',
+      'Tumores y Masas Orbitarias del Adulto y la Infancia: Hemangioma Cavernoso, Quiste Dermoide, Linfoma MALT Orbitario, Rabdomiosarcoma y Seudotumor Inflamatorio',
+      'Cirugía Radical y Reconstructiva Orbitaria: Enucleación, Evisceración con Implante Poroso, Exenteración Orbitaria y Manejo del Cavidad Anoftálmica',
+      'Blefaroplastia Superior e Inferior: Dermatocalasis, septo orbitario, manejo de paquetes grasos, preservación de piel de seguridad y abordaje transconjuntival',
+      'Síndrome Compartimental Orbitario y Hematoma Retrobulbar a Tensión: Emergencia ciega tiempo-dependiente y descompresión urgente mediante Cantotomía Lateral y Cantólisis Inferior al pie de cama',
+      'Fracturas Orbitarias por Estallido (Blow-Out) y Fractura en Trampilla Pediátrica (Trapdoor): Mecanismos hidráulico vs buckling, enoftalmos, diplopía, hipoestesia V2, emergencia del trapdoor con reflejo óculo-cardíaco y cirugía en <24-48 h, reconstrucción con titanio y Medpor',
+      'Manejo Oculoplástico de la Parálisis Facial y Lagoftalmos Paralítico: Biomecánica del orbicular, fenómeno de Bell ausente y riesgo de úlcera neuroparalítica, cámara húmeda, toxina botulínica, implante pretarsal de pesa de platino/oro y tira tarsal lateral (LTS)'
+    ],
+    anatomicalStructures: [
+      'Septo orbitario (límite anatómico anatomo-clínico anterior)',
+      'Músculo elevador del párpado superior, aponeurosis y ligamento suspensorio de Whitnall',
+      'Músculo tarsal superior de Müller y músculo tarsal inferior',
+      'Tarsos cartilaginosos superior e inferior y tendones cantales medial y lateral',
+      'Vía lagrimal: puntos, canalículos, saco lagrimal y canal óseo nasolagrimal',
+      'Paredes óseas orbitarias: lámina papirácea del etmoides, piso orbitario maxilomalar y canal infraorbitario',
+      'Grasa preaponeurótica y compartimentos retrobulbares intracónicos y extracónicos'
+    ],
+    referenceGuidelines: 'ESOPRS Guidelines / AAO BCSC Section 7: Orbit, Eyelids, and Lacrimal System / Consenso EUGOGO',
+    highYieldTips: [
+      'Carcinoma de Glándulas Sebáceas (SGC): Tumor altamente maligno originado en glándulas de Meibomio (más frecuente en párpado superior); suele simular un chalazión recurrente indolente o una blefaroconjuntivitis crónica unilateral. Requiere biopsia en espesor total y mapeo conjuntival para descartar diseminación pagetoide.',
+      'Fractura por Estallido del Piso Orbitario (Blow-Out): Sospechar atrapamiento del músculo recto inferior si hay enoftalmos, diplopía vertical en supraducción/infraducción y anestesia o parestesia en el territorio del nervio infraorbitario (mejilla ipsilateral, labio superior y encía).',
+      'Enfoque Escalonado de la Orbitopatía Tiroidea: La rehabilitación quirúrgica debe seguir estrictamente un orden temporal de 4 fases una vez estabilizada la fase inactiva (CAS <3): 1º Descompresión orbitaria ósea/grasa; 2º Cirugía de estrabismo restrictivo; 3º Corrección de retracción palpebral; 4º Blefaroplastia estética.',
+      'Ptosis con Función del Elevador Pobre (<4 mm): Está contraindicada la resección o avance de aponeurosis del elevador; la técnica de elección es la Suspensión al Músculo Frontal (mediante fascia lata autóloga o suturas de silicón/Gore-Tex).',
+      'Dacriocistitis Aguda en el Adulto: NUNCA realizar sondaje lagrimal ni irrigación forzada de la vía en la fase flemonosa aguda por riesgo de diseminar la infección a planos profundos o causar celulitis orbitaria. Tratar primero con antibióticos sistémicos y diferir la DCR a la resolución de la inflamación.',
+      'Hematoma Retrobulbar a Tensión con Síndrome Compartimental Orbitario: Emergencia quirúrgica ciega. Si la PIO intraorbitaria supera los 40 mmHg y hay proptosis rápida, DPAR y pérdida de visión, realizar de inmediato CANTOTOMÍA LATERAL CON CANTÓLISIS INFERIOR al pie de cama sin esperar neuroimagen.',
+      'Evisceración vs Enucleación: La evisceración vacía el contenido intraocular preservando la esclera y las inserciones musculares naturales (mejor motilidad protésica y menor deformidad). Sin embargo, la enucleación (remoción del globo intacto con muñón de nervio óptico de 10 mm) es MANDATORIA si existe sospecha de tumor intraocular maligno (Melanoma Uveal o Retinoblastoma) para no sembrar células neoplásicas.'
+    ]
+  },
+  {
+    id: 'refraccion',
+    name: 'Refracción, Óptica y Córnea Quirúrgica',
+    shortName: 'Refracción',
+    iconName: 'Glasses',
+    color: 'from-blue-500 to-indigo-700',
+    badgeColor: 'text-blue-700 bg-blue-50 border-blue-200',
+    description: 'Óptica geométrica y física, aberrometría de Zernike, refracción clínica, cicloplejía, lentes fáquicos (ICL) y cirugía refractiva corneal (LASIK, PRK, SMILE).',
+    keyTopics: [
+      'Queratocono y Ectasias Corneales: Tomografía Pentacam (Software Belin-Ambrósio BAD-D)',
+      'Cirugía Refractiva Láser: PRK de Superficie vs Femto-LASIK vs SMILE (Lentículo Intrastromal)',
+      'Criterios Biomecánicos de Seguridad: PTA (Percentage of Tissue Altered <40%) y Lecho Residual RSB >300 µm',
+      'Complicaciones Quirúrgicas: Queratitis Lamelar Difusa (DLK / Arenas del Sahara), Haze y Estrías de Flap',
+      'Lentes Intraoculares Fáquicos (EVO/EVO+ ICL): Dimensionamiento Sulcus-to-Sulcus y Medición del Vault',
+      'Óptica Clínica y Aberrometría de Alto Orden (Zernike: Coma, Trefoil, Aberración Esférica)',
+      'Presbicia y Técnicas Quirúrgicas: Monovisión, Presbyond e Implante de LIO Multifocales/EDOF',
+      'Óptica Clínica: Astigmatismo con la regla, contra la regla y oblicuo; Cilindro cruzado de Jackson',
+      'Análisis Vectorial de Alpins y Manejo de Sorpresas Refractivas: Vectores TIA, SIA, Difference Vector (DV), componentes de Fourier de Thibos (M, J0, J45), reposicionamiento rotacional de LIO tórico guiado por AstigmatismFix, bioptics corneal (relift vs PRK con MMC) y Piggyback Sulcoflex en surco',
+      'Cálculo de LIO en Ojos con Cirugía Refractiva Previa (Post-LASIK, PRK y RK): Análisis de los tres errores capitales (índice 1.3375, curvatura paracentral y predicción errónea de ELP), métodos sin datos históricos (Barrett True-K No-History, Haigis-L, Shammas-PL), calculadora ASCRS y manejo especial post-RK'
+    ],
+    anatomicalStructures: ['Película lagrimal', 'Superficie anterior y posterior corneal', 'Pupila de entrada', 'Cristalino', 'Eje visual vs eje óptico (Ángulo Kappa)'],
+    referenceGuidelines: 'AAO BCSC Section 3: Clinical Optics and Section 13: Refractive Surgery',
+    highYieldTips: [
+      'Fórmula de Munnerlyn para ablación excímer: Profundidad (um) = [Dioptrías x (Diámetro de zona óptica en mm)^2] / 3.',
+      'En refracción de hipermetropía latente o sospecha de pseudo-miopía en jóvenes: SIEMPRE realizar refracción bajo cicloplejía total.',
+      'Vault óptimo para lente ICL faquico en cámara posterior: 250 a 750 um (aproximadamente 0.5 a 1.5 espesores corneales).'
+    ]
+  },
+  {
+    id: 'oncologia',
+    name: 'Oncología Ocular y Tumores Intraoculares',
+    shortName: 'Oncología Ocular',
+    iconName: 'ShieldAlert',
+    color: 'from-purple-600 via-pink-700 to-rose-800',
+    badgeColor: 'text-purple-700 bg-purple-50 border-purple-200',
+    description: 'Diagnóstico integral, estadificación TNM/AJCC y tratamiento conservador y quirúrgico de neoplasias intraoculares, orbitarias, palpebrales y de la superficie ocular en adultos y niños.',
+    keyTopics: [
+      '1. Melanoma Uveal: Cáncer intraocular primario más frecuente en adultos, originado en la úvea (coroides, cuerpo ciliar o iris). Mnemotecnia TFSOM-UHHD, ensayo COMS (Braquiterapia I-125 vs Enucleación), metástasis hepáticas y terapia diana con Tebentafusp.',
+      '2. Retinoblastoma: Tumor intraocular maligno más común en la infancia, de origen genético (mutación bialélica en gen RB1 13q14) y caracterizado por leucocoria y estrabismo. Clasificación ICRB A-E, quimioterapia intraarterial (IAC) y contraindicación absoluta de biopsia/PAAF.',
+      '3. Tumores Metastásicos Oculares: Neoplasias secundarias a cánceres de otros órganos (principalmente mama en mujeres y pulmón en varones); constituyen el tumor intraocular maligno más común en adultos. Masas amelanóticas multifocales en polo posterior, reflectividad ecográfica interna alta (60-90%) y radioterapia fraccionada.',
+      '4. Neoplasias de la Superficie Ocular (OSSN): Espectro tumoral en conjuntiva y córnea desde displasias intraepiteliales leves hasta carcinomas escamosos invasores y melanomas conjuntivales. Resección excisional reglada "no-touch" de Shields con margen de 4 mm, crioterapia y quimioterapia tópica (Interferón alfa-2b, 5-FU, Mitomicina C).',
+      '5. Tumores Orbitarios: Lesiones y neoplasias del espacio orbitario y cono muscular (linfomas MALT anexiales, tumores de la glándula lagrimal: adenoma pleomorfo vs carcinoma adenoide quístico doloroso, gliomas del nervio óptico asociados a NF-1, hemangiomas cavernosos y rabdomiosarcoma pediátrico).',
+      '6. Tumores Palpebrales: Cánceres en los párpados, siendo el carcinoma basocelular el más habitual (85-90%, nodular y morfeiforme perlado), seguido del carcinoma espinocelular (invasión perineural) y del carcinoma de glándulas sebáceas de Meibomio (simulador de chalazión recidivante con diseminación pagetoide y biopsias en mapa).',
+      '7. Diagnóstico Avanzado y Genética Molecular: Técnicas de imagen multimodal (ecografía estandarizada modos A y B, UBM de 50 MHz para segmento anterior, EDI-OCT macular) y biomarcadores moleculares y citogenéticos (mutación y pérdida de BAP1, Monosomía del cromosoma 3, ganancia de 8q, perfil de expresión génica Castle GEP Clase 1 vs Clase 2 y biopsia transescleral/transvítrea FNAB).',
+      '8. Linfoma Intraocular Vitreorretiniano Primario (VRL / Síndrome Mascarada): Linfoma B difuso de células grandes (DLBCL) del SNC, vitritis en sábanas y copos, infiltrados sub-EPR en piel de leopardo, vitrectomía en fresco diagnóstica, ratio IL-10/IL-6 > 1, mutación somática MYD88 L265P y quimioterapia con metotrexato/rituximab intravítreo.',
+      '9. Hemangioma Coroideo Circunscrito (CCH): Neoplasia vascular hamartomatosa benigna solitaria en polo posterior, diagnóstico diferencial con melanoma amelanótico, reflectividad ecográfica interna ultra-alta (100% en modo A), lavado tardío patognomónico ("wash-out") en angiografía ICG y tratamiento curativo con Terapia Fotodinámica (PDT) con verteporfina.'
+    ],
+    anatomicalStructures: [
+      'Coroides, cuerpo ciliar e iris (Tracto uveal)',
+      'Retina neurosensorial y epitelio pigmentario de la retina (EPR)',
+      'Glándulas de Meibomio y Zeiss (Párpado superior e inferior)',
+      'Espacio orbitario extraconal e intraconal y glándula lagrimal',
+      'Limbo esclerocorneal, conjuntiva bulbar y tarsal',
+      'Nervio óptico y vainas meníngeas'
+    ],
+    referenceGuidelines: 'AAO BCSC Section 4: Ophthalmic Pathology and Intraocular Tumors / COMS Trials / AJCC 8th Edition Ophthalmic Oncology / International Retinoblastoma Staging System',
+    highYieldTips: [
+      'Regla mnemotécnica TFSOM-UHHD para nevus coroideo sospechoso: To Find Small Ocular Melanoma Using Helpful Hints Daily (Grosor >2 mm, Fluido subretiniano en OCT, Síntomas visuales, Pigmento naranja/lipofuscina, Margen a <3 mm de papila, Ultrasonido con reflectividad baja y vaciamiento acústico, Halo ausente, Drusas ausentes).',
+      'Retinoblastoma: La biopsia o punción intraocular (PAAF) está FORMALMENTE CONTRAINDICADA por el riesgo letal de diseminación tumoral extraocular a órbita y metástasis sistémica.',
+      'Metástasis Coroideas vs Melanoma en ecografía modo A: Las metástasis presentan reflectividad acústica interna ALTA (>60-90%) y ángulo kappa ancho por heterogeneidad celular, mientras que el melanoma tiene reflectividad BAJA (<60%) con ángulo descendente pronunciado.',
+      'Carcinoma Sebáceo de Párpado: Todo chalazión recidivante o blefaritis asimétrica con madarosis en mayores de 60 años exige biopsia de espesor completo y biopsias en mapa conjuntivales para descartar diseminación pagetoide intraepitelial.',
+      'Genética de Melanoma Uveal: La pérdida de BAP1 (3p21) unida a Monosomía 3 y ganancia de 8q define el perfil de alto riesgo metastásico hematógeno hepático (Clase 2 de expresión génica) con >70% de metástasis a 5 años.'
+    ]
+  }
+];
