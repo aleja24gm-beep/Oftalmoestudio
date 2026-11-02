@@ -77,34 +77,76 @@ export const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ isOpen, onClose, onKey
     setTestResult(null);
 
     try {
-      const res = await fetch('/api/gemini/test-key', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'x-gemini-api-key': keyToTest
-        },
-        body: JSON.stringify({ apiKey: keyToTest })
-      });
+      // 1. Try local server endpoint if available
+      let backendTested = false;
+      try {
+        const res = await fetch('/api/gemini/test-key', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-gemini-api-key': keyToTest
+          },
+          body: JSON.stringify({ apiKey: keyToTest })
+        });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setTestResult({
-          success: true,
-          message: '¡Conexión exitosa! La API de Gemini está lista y respondiendo correctamente.'
-        });
-        // Auto-save on successful test
-        setStoredApiKey(keyToTest);
-        if (onKeySaved) onKeySaved();
-      } else {
-        setTestResult({
-          success: false,
-          message: data.error || 'No se pudo verificar la API Key. Comprueba que sea válida en aistudio.google.com.'
-        });
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('application/json')) {
+          const data = await res.json();
+          backendTested = true;
+          if (res.ok && data.success) {
+            setTestResult({
+              success: true,
+              message: '¡Conexión exitosa! La API de Gemini está lista y respondiendo correctamente.'
+            });
+            setStoredApiKey(keyToTest);
+            if (onKeySaved) onKeySaved();
+            return;
+          } else {
+            setTestResult({
+              success: false,
+              message: data.error || 'No se pudo verificar la API Key. Comprueba que sea válida en aistudio.google.com.'
+            });
+            return;
+          }
+        }
+      } catch {
+        // Backend not available (static host like GitHub Pages or Vercel static)
+        backendTested = false;
+      }
+
+      // 2. Direct client-side test against Google Gemini API (ideal for GitHub Pages / Vercel SPA)
+      if (!backendTested) {
+        const googleRes = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(keyToTest)}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: 'Responde únicamente OK.' }] }]
+            })
+          }
+        );
+
+        const googleData = await googleRes.json();
+        if (googleRes.ok && googleData?.candidates?.[0]?.content) {
+          setTestResult({
+            success: true,
+            message: '¡Conexión exitosa con Google Gemini! Clave verificada y lista para usarse.'
+          });
+          setStoredApiKey(keyToTest);
+          if (onKeySaved) onKeySaved();
+        } else {
+          const errMsg = googleData?.error?.message || 'Clave API no válida o sin permisos. Verifica tu clave en aistudio.google.com.';
+          setTestResult({
+            success: false,
+            message: errMsg
+          });
+        }
       }
     } catch (err: any) {
       setTestResult({
         success: false,
-        message: 'Error de red al intentar conectar con el servidor de la API.'
+        message: 'Error de red al conectar con Google Gemini. Revisa tu conexión a internet.'
       });
     } finally {
       setIsTesting(false);

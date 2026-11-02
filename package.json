@@ -1,11 +1,12 @@
 {
-  "name": "react-example",
+  "name": "oftalmo-resident",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --platform=node --format=esm --outfile=server.js",
+    "build:client": "vite build",
     "start": "node server.js",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

@@ -44,29 +44,92 @@ function getAuthHeaders(): Record<string, string> {
   return headers;
 }
 
+// Helper to call Google Gemini REST API directly from the browser (crucial for GitHub Pages / Vercel SPA)
+async function callGeminiDirectJson(prompt: string, apiKey: string): Promise<any> {
+  const models = ['gemini-2.5-flash', 'gemini-1.5-flash'];
+  for (const model of models) {
+    try {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              temperature: 0.25,
+            }
+          })
+        }
+      );
+      if (res.ok) {
+        const json = await res.json();
+        const text = json?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text) {
+          return JSON.parse(text);
+        }
+      }
+    } catch (e) {
+      console.warn(`Direct Gemini call with ${model} failed:`, e);
+    }
+  }
+  return null;
+}
+
 export async function askResidentCaseAPI(
   question: string,
   subspecialty: string,
   residencyYear: string,
   focus: string
 ): Promise<ResidentConsultationResponse> {
-  // 1. Try backend Gemini API
+  const apiKey = getStoredApiKey();
+
+  // 1. Try backend Gemini API (works on Node.js/Full-Stack host)
   try {
-    const apiKey = getStoredApiKey();
     const res = await fetch('/api/gemini/ask-resident-case', {
       method: 'POST',
       headers: getAuthHeaders(),
       body: JSON.stringify({ question, subspecialty, residencyYear, focus, apiKey }),
     });
 
-    if (res.ok) {
+    const contentType = res.headers.get('content-type') || '';
+    if (res.ok && contentType.includes('application/json')) {
       const json = await res.json();
       if (json.success && json.data && !json.fallback) {
         return { success: true, data: json.data, source: 'gemini' };
       }
     }
   } catch (err) {
-    console.warn('Backend call failed or offline, switching to clinical knowledge engine.', err);
+    console.warn('Backend call failed or offline, checking direct client API key...', err);
+  }
+
+  // 1.1 Direct client-side Gemini call if user configured API Key (for GitHub Pages / Vercel static)
+  if (apiKey && apiKey.trim().length > 10) {
+    const directPrompt = `Eres un profesor emérito de oftalmología y examinador de Boards.
+Pregunta/Caso: "${question}"
+Subespecialidad: ${subspecialty || 'General'}
+Nivel del Residente: ${residencyYear || 'R2/R3'}
+Enfoque: ${focus || 'Diagnóstico y Manejo de Guardia'}
+
+Devuelve un JSON estrictamente válido con este formato:
+{
+  "diagnosticSummary": "Resumen conciso del diagnóstico de sospecha",
+  "pathophysiology": "Fundamentación fisiopatológica íntima",
+  "clinicalApplication": {
+    "guardia": "Qué hacer de inmediato en la guardia / urgencias",
+    "tratamiento": "Tratamiento médico y quirúrgico escalonado de elección",
+    "criteriosDerivacionOQuirurgicos": "Criterios de alarma o indicación quirúrgica",
+    "contraindicaciones": "Contraindicaciones absolutas y errores a evitar"
+  },
+  "pearlHighYield": "Perla de examen de alto rendimiento (High Yield)",
+  "keyReferences": "Guías clínicas de referencia (AAO BCSC, landmark trials)"
+}`;
+
+    const directResult = await callGeminiDirectJson(directPrompt, apiKey);
+    if (directResult && directResult.diagnosticSummary && directResult.clinicalApplication) {
+      return { success: true, data: directResult, source: 'gemini' };
+    }
   }
 
   // 2. High-precision clinical matcher with the comprehensive knowledge base
@@ -314,22 +377,49 @@ export async function generateQuestionAPI(
   difficulty: string,
   specificTopic?: string
 ): Promise<{ success: boolean; data: Question; source: 'gemini' | 'curated-engine' }> {
+  const apiKey = getStoredApiKey();
+
   try {
-    const apiKey = getStoredApiKey();
     const res = await fetch('/api/gemini/generate-question', {
       method: 'POST',
       headers: getAuthHeaders(),
       body: JSON.stringify({ subspecialty, difficulty, specificTopic, apiKey }),
     });
 
-    if (res.ok) {
+    const contentType = res.headers.get('content-type') || '';
+    if (res.ok && contentType.includes('application/json')) {
       const json = await res.json();
       if (json.success && json.data && !json.fallback) {
         return { success: true, data: json.data, source: 'gemini' };
       }
     }
   } catch (err) {
-    console.warn('Backend question generator failed, selecting from residency pool.', err);
+    console.warn('Backend question generator failed, checking client API key...', err);
+  }
+
+  // Direct client call if user configured API Key (for GitHub Pages / Vercel SPA)
+  if (apiKey && apiKey.trim().length > 10) {
+    const prompt = `Genera un caso clínico inédito de examen para residentes de oftalmología en el área: "${subspecialty || 'Retina'}", dificultad: "${difficulty || 'Intermedia'}", tema específico: "${specificTopic || 'Caso clínico de alta frecuencia'}".
+Devuelve un JSON estrictamente válido:
+{
+  "id": "gen-${Date.now()}",
+  "subspecialtyId": "${subspecialty}",
+  "topic": "${specificTopic || 'Caso de examen'}",
+  "difficulty": "${difficulty}",
+  "clinicalVignette": "Viñeta clínica detallada con edad, sexo, tiempo de evolución, síntomas, agudeza visual, biomicroscopía y pruebas iniciales",
+  "questionText": "Pregunta clínica concreta sobre diagnóstico diferencial, siguiente mejor paso o conducta terapéutica",
+  "options": ["A) ...", "B) ...", "C) ...", "D) ..."],
+  "correctIndex": 0,
+  "explanation": "Fundamentación fisiopatológica rigurosa de la opción correcta y descarte de las erróneas",
+  "clinicalApplication": "Aplicación clínica directa: Qué debe hacer el médico en guardia, consulta o quirófano con este hallazgo",
+  "pearl": "Perla de examen de alto rendimiento (High-yield residency pearl)",
+  "tags": ["${subspecialty}", "${difficulty}"]
+}`;
+
+    const directResult = await callGeminiDirectJson(prompt, apiKey);
+    if (directResult && directResult.questionText && Array.isArray(directResult.options)) {
+      return { success: true, data: directResult as Question, source: 'gemini' };
+    }
   }
 
   const matching = INITIAL_QUESTIONS.filter((q) => q.subspecialtyId === subspecialty);
